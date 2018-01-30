@@ -30,11 +30,11 @@ export default class SeatingChart extends React.Component {
 
   render() {
     return (
-      <Grid columns={this.state.naming.columns.length} container> 
+      <div className="seatChart-container">
       {this.state.seats.map(function(row, index) {
         return <SeatingRow seats={row} key={index}/> 
       })}
-      </Grid>
+      </div>
     )
   }
 }

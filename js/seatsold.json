@@ -1,0 +1,30 @@
+{
+	"seats": [
+	[{
+        "seatType": "handicapped",
+            "label": "5",
+            "id": "0_0" }, {
+		"seatType": "regular",
+        "label": "3",
+        "id": "0_1"
+		}, {
+		"seatType": "spacer","size": 1}],
+    [{
+		"seatType": "regular",
+			"label": "21",
+			"id": "1_0"
+		},{
+		"seatType": "regular",
+			"label": "22",
+			"id": "1_1"
+		},{
+		"seatType": "regular",
+			"label": "23",
+			"id": "1_2"
+		}]
+], 
+    "naming": {
+        "rows": ["A", "B"],
+        "columns": ["1", "2", "3"]
+    }
+}
