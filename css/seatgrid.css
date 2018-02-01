@@ -14,7 +14,7 @@ div.seatChart-cell, button.seatChart-cell {
   color: blue;
 }
 
-div.seatChart-seat, button.seatChart-seat {
+div.seatChart-seat {
   background-color: green;
   color: white;
   border-radius: 5px;
@@ -22,7 +22,7 @@ div.seatChart-seat, button.seatChart-seat {
   text-align: center;
 }
 
-button.seatChart-seat:focus {
+div.seatChart-seat:focus {
   border: none;
 }
 
@@ -38,19 +38,23 @@ div.seatChart-row:after {
   clear: both;
 }
 
-button.seatChart-seat.selected {
+div.seatChart-seat.selected {
   background-color: aqua;
 }
 
-button.seatChart-seat.focused {
+div.seatChart-seat.focused {
   background-color: #6db131;
 }
 
-button.seatChart-seat.available {
-  background-color: green;
-}
-
-button.seatChart-seat.unavailable {
+div.seatChart-seat.unavailable {
   background-color: red;
   cursor: not-allowed;
+}
+
+div.seatChart-seat.regular {
+  background-color: gray;
+}
+
+div.seatChart-seat.accessible {
+  background-color: blue;
 }

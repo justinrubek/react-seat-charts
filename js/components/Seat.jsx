@@ -1,13 +1,25 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import AccessibleSeat from './AccessibleSeat'
+import Spacer from './Spacer'
 
-export default class Seat extends React.Component {
+import shortid from 'shortid';
+
+class Seat extends React.Component {
   render() {
-    let seat = <div className="seatChart-cell seatChart-seat available">{this.props.label}</div>
-    //return <Button className="seatChart-seat seatChart-cell available" color='green' key={this.props.seatId} size='mini'>{this.props.label}</Button>
-    //return <div key={this.props.seatId} className="seatChart-seat seatChart-cell regular-seat available" role="checkbox" aria-checked="false" focusable="true" tabIndex="-1">{this.props.label}</div>
+    let type = this.props.type;
+    let classNames = "seatChart-seat" + " " + type;
+    let key = shortid.generate();
+    let onClick = this.props.onSeatClick;
+    let text = this.props.label;
 
-    return <div key={this.props.seatId} className="seatChart-cell">{seat}</div>
+    let seat = <div className={classNames} key={key} onClick={onClick}>{text}</div>
+
+    return <div key={shortid.generate()} className="seatChart-cell">{seat}</div>
   }
 
 }
+
+Seat.Accessible = AccessibleSeat;
+Seat.Spacer = Spacer;
+
+export default Seat;

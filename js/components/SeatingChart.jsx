@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import shortid from 'shortid';
 
 import SeatingRow from './SeatingRow';
 
@@ -26,14 +27,21 @@ export default class SeatingChart extends React.Component {
       naming: naming,
       seats: seats
     };
+
+    this.onSeatClick = this.onSeatClick.bind(this);
+  }
+
+  onSeatClick(e, seat) {
+    console.log(e);
+    console.log(seat);
   }
 
   render() {
     return (
       <div className="seatChart-container">
       {this.state.seats.map(function(row, index) {
-        return <SeatingRow seats={row} key={index}/> 
-      })}
+        return <SeatingRow seats={row} onSeatClick={this.onSeatClick} key={shortid.generate()} /> 
+      }, this)}
       </div>
     )
   }
