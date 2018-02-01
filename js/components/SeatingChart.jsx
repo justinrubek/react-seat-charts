@@ -31,16 +31,16 @@ export default class SeatingChart extends React.Component {
     this.onSeatClick = this.onSeatClick.bind(this);
   }
 
-  onSeatClick(e, seat) {
-    console.log(e);
-    console.log(seat);
+  onSeatClick(row, column) {
+    console.log("Row: " + row);
+    console.log("Column: " + column);
   }
 
   render() {
     return (
       <div className="seatChart-container">
-      {this.state.seats.map(function(row, index) {
-        return <SeatingRow seats={row} onSeatClick={this.onSeatClick} key={shortid.generate()} /> 
+      {this.state.seats.map(function(row, i) {
+        return <SeatingRow seats={row} onSeatClick={this.onSeatClick} key={shortid.generate()} num={i} /> 
       }, this)}
       </div>
     )

@@ -9,7 +9,7 @@ div.seatChart-cell, button.seatChart-cell {
   float: left;
   text-align: center;
   outline: none;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 16px;
   color: blue;
 }
@@ -17,7 +17,7 @@ div.seatChart-cell, button.seatChart-cell {
 div.seatChart-seat {
   background-color: green;
   color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   cursor: default;
   text-align: center;
 }
@@ -52,7 +52,7 @@ div.seatChart-seat.unavailable {
 }
 
 div.seatChart-seat.regular {
-  background-color: gray;
+  background-color: #54aff4;
 }
 
 div.seatChart-seat.accessible {
