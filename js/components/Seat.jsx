@@ -13,6 +13,7 @@ class Seat extends React.Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   handleClick() {
@@ -23,13 +24,22 @@ class Seat extends React.Component {
     click(row, column);
   }
 
-  render() {
-    let type = this.props.type;
-    let classNames = "seatChart-seat" + " " + type;
-    let key = shortid.generate();
-    let text = this.props.label;
+  handleFocus() {
+    let row = this.props.row;
+    let column = this.props.column;
 
-    let seat = <div className={classNames} key={key} onClick={this.handleClick}>{text}</div>
+    let focus = this.props.onSeatFocus;
+    focus(row, column);
+  }
+
+  render() {
+    let type = this.props.seat.seatType;
+    let status = this.props.seat.status;
+    let classNames = "seatChart-seat" + " " + type + " " + status;
+    let key = shortid.generate();
+    let text = this.props.seat.label;
+
+    let seat = <div className={classNames} key={key} onClick={this.handleClick} onFocus={this.handleFocus}>{text}</div>
 
     return <div key={shortid.generate()} className="seatChart-cell">{seat}</div>
   }

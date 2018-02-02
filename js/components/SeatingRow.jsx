@@ -19,21 +19,21 @@ export default class SeatingRow extends React.Component {
 
     let seats = this.props.seats.map((seat, i) => {
 
-      let seatId = seat.id;
-      let onClick = this.props.onSeatClick;
-      let key = shortid.generate();
       let type = seat.seatType;
+      let onClick = this.props.onSeatClick;
+      let onFocus = this.props.onSeatFocus;
+      let key = shortid.generate();
 
       let row = this.props.num;
 
-      if (type == 'spacer') {
-        return <Spacer seatId={seat.id} key={key}/>
+      if (seat.seatType == 'spacer') {
+        return <Spacer seat={seat} key={key}/>
       }
       else if (type == 'accessible') {
-        return <Seat.Accessible seatId={seatId} label={seat.label} key={key} onSeatClick={onClick} row={row} column={i}/>
+        return <Seat.Accessible seat={seat} key={key} onSeatClick={onClick} onSeatFocus={onFocus} row={row} column={i}/>
       }
       else {
-        return <Seat seatId={seatId} type={type} label={seat.label} key={key} onSeatClick={onClick} row={row} column={i}/>
+        return <Seat seat={seat} key={key} onSeatClick={onClick} onSeatFocus={onFocus} row={row} column={i}/>
       }
     })
 

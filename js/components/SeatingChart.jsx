@@ -4,24 +4,24 @@ import shortid from 'shortid';
 
 import SeatingRow from './SeatingRow';
 
+function copyObject(obj) {
+  return Object.assign({}, obj);
+}
+
+function cloneDoubleNested(list) {
+  return list.map(row => {
+    return row.map(item => copyObject(item));
+  });
+}
+
 export default class SeatingChart extends React.Component {
   constructor(props) {
     super(props);
 
     let seats = props.seats;
-    let naming = props.naming;
-    let original = Object.assign({}, seats);
+    let original = cloneDoubleNested(seats);
 
-/*
-    let original = [];
-    for (let i = 0; i < seats.length; i++) {
-      let row = []
-      for (let j = 0; j < seats[i].length; j++) {
-        row[j] = {...seats[i][j]};
-      }
-      original[i] = row;
-    }
-*/
+    let naming = props.naming;
     if (naming == null) {
       let rows = [];
       let columns = [];
@@ -41,19 +41,46 @@ export default class SeatingChart extends React.Component {
       original: original
     };
 
-    this.onSeatClick = this.onSeatClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
-  onSeatClick(row, column) {
-    let seats = this.state.seats.slice();
+  handleClick(row, column) {
+    let seats = cloneDoubleNested(this.state.seats);
+
     let seat = seats[row][column];
-    
+
     if (seat.seatType === "selected") {
 
-      seat.seatType = "regular"; //original[row][column].seatType;
+      let original = copyObject(this.state.original[row][column]);
+      seat.seatType = original.seatType;
     }
     else {
       seat.seatType = "selected";
+    }
+
+    if (this.props.onClick != undefined) {
+      this.props.onClick(row, column, seats);
+    }
+
+    this.setState({seats: seats});
+  }
+
+  handleFocus(row, column) {
+    let seats = cloneDoubleNested(this.state.seats);
+
+    let seat = seats[row][column];
+
+    if (seat.status === "available") {
+      seat.status = "focused";
+    }
+    else {
+      let original = copyObject(this.state.original[row][column]);
+      seat.status = original.status;
+    }
+
+    if (this.props.onFocus != undefined) {
+      this.props.onFocus(row, column, seats);
     }
 
     this.setState({seats: seats});
@@ -63,7 +90,7 @@ export default class SeatingChart extends React.Component {
     return (
       <div className="seatChart-container">
       {this.state.seats.map(function(row, i) {
-        return <SeatingRow seats={row} onSeatClick={this.onSeatClick} key={shortid.generate()} num={i} /> 
+        return <SeatingRow seats={row} onSeatClick={this.handleClick} onSeatFocus={this.handleFocus} key={shortid.generate()} num={i} /> 
       }, this)}
       </div>
     )
