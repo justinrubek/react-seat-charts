@@ -39,7 +39,7 @@ div.seatChart-row:after {
 }
 
 div.seatChart-seat.selected {
-  background-color: aqua;
+  background-color: #A48ED6;
 }
 
 div.seatChart-seat.focused {

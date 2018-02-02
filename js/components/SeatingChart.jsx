@@ -10,7 +10,18 @@ export default class SeatingChart extends React.Component {
 
     let seats = props.seats;
     let naming = props.naming;
+    let original = Object.assign({}, seats);
 
+/*
+    let original = [];
+    for (let i = 0; i < seats.length; i++) {
+      let row = []
+      for (let j = 0; j < seats[i].length; j++) {
+        row[j] = {...seats[i][j]};
+      }
+      original[i] = row;
+    }
+*/
     if (naming == null) {
       let rows = [];
       let columns = [];
@@ -25,15 +36,27 @@ export default class SeatingChart extends React.Component {
 
     this.state = {
       naming: naming,
-      seats: seats
+      seats: seats,
+
+      original: original
     };
 
     this.onSeatClick = this.onSeatClick.bind(this);
   }
 
   onSeatClick(row, column) {
-    console.log("Row: " + row);
-    console.log("Column: " + column);
+    let seats = this.state.seats.slice();
+    let seat = seats[row][column];
+    
+    if (seat.seatType === "selected") {
+
+      seat.seatType = "regular"; //original[row][column].seatType;
+    }
+    else {
+      seat.seatType = "selected";
+    }
+
+    this.setState({seats: seats});
   }
 
   render() {
