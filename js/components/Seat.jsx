@@ -4,7 +4,7 @@ import Spacer from './Spacer'
 
 import shortid from 'shortid';
 
-class Seat extends React.Component {
+export default class Seat extends React.Component {
   constructor(props) {
     super(props);
 
@@ -48,5 +48,3 @@ class Seat extends React.Component {
 
 Seat.Accessible = AccessibleSeat;
 Seat.Spacer = Spacer;
-
-export default Seat;

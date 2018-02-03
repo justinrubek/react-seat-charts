@@ -3,8 +3,8 @@ import { Grid } from 'semantic-ui-react';
 
 import shortid from 'shortid';
 
-import Seat from './Seat.jsx'
-import Spacer from './Spacer.jsx'
+import Seat from './Seat'
+import Spacer from './Spacer'
 
 export default class SeatingRow extends React.Component {
   constructor(props) {
