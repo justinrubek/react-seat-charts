@@ -2,7 +2,7 @@
   "name": "react-seat-charts",
   "version": "0.0.0",
   "description": "A react version of jquery-seat-charts",
-  "main": "index.js",
+  "main": "js/index.jsx",
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",
     "dev-build": "webpack --progress -d --config webpack.config.js",
