@@ -1,8 +1,8 @@
 {
   "name": "react-seat-charts",
-  "version": "0.0.0",
-  "description": "A react version of jquery-seat-charts",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "A react seating chart selector",
+  "main": "js/index.jsx",
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",
     "dev-build": "webpack --progress -d --config webpack.config.js",
@@ -22,19 +22,13 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "semantic-ui-react": "^0.77.2",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
-    "axios": "^0.17.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.9",
-    "file-loader": "^1.1.6",
-    "style-loader": "^0.20.1",
-    "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
   },
   "babel": {
