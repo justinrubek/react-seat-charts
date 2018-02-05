@@ -1,6 +1,8 @@
 # React Seat Charts
 React Seat Charts is a library powered by React to create interactive seat selectors.
 
+[Example](https://justinrubek.github.io/react-seat-charts-example/) 
+
 ## Installation
 To install, use npm:
 ```bash
