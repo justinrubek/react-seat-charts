@@ -17,11 +17,14 @@ export default class Seat extends React.Component {
   }
 
   handleClick() {
-    let row = this.props.row;
-    let column = this.props.column;
+    if (this.props.seat.status != 'unavailable')
+    {
+      let row = this.props.row;
+      let column = this.props.column;
 
-    let click = this.props.onSeatClick;
-    click(row, column);
+      let click = this.props.onSeatClick;
+      click(row, column);
+    }
   }
 
   handleFocus() {
@@ -33,15 +36,20 @@ export default class Seat extends React.Component {
   }
 
   render() {
-    let type = this.props.seat.seatType;
-    let status = this.props.seat.status;
-    let classNames = "seatChart-seat" + " " + type + " " + status;
+    let classNames = "seatChart-seat" + " ";
+    if (this.props.seat.status == "unavailable") {
+      classNames += this.props.seat.status;
+    }
+    else {
+      classNames += this.props.seat.type;
+    }
+
     let key = shortid.generate();
     let text = this.props.seat.label;
 
     let seat = <div className={classNames} key={key} onClick={this.handleClick} onFocus={this.handleFocus}>{text}</div>
 
-    return <div key={shortid.generate()} className="seatChart-cell">{seat}</div>
+      return <div key={shortid.generate()} className="seatChart-cell">{seat}</div>
   }
 
 }
